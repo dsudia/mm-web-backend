@@ -6,10 +6,11 @@ import (
 )
 
 funct init() {
-	orm.RegisterDriver("pq", orm.DRPostgres)
-	orm.RegisterDataBase("default", "pq", "root:root@/my_db?charset=utf8", 30)
+	orm.RegisterDriver("postgres", orm.DRPostgres)
+	orm.RegisterDataBase("default", "postgres", "dbname=test", 30)
+	orm.RegisterModel(new(Educator), new(School), new(SchoolMatchingProfile), new(Match))
 }
 
 func main() {
-	
+	o := orm.NewOrm()
 }

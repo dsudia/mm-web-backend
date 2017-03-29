@@ -1,7 +1,5 @@
 package main
 
-import "github.com/astaxie/beego/orm"
-
 // Educator defines a database model for an educator user
 type Educator struct {
 	ID           int
@@ -80,8 +78,4 @@ type Match struct {
 	SchoolConfirmation      bool
 	EducatorDenial          bool
 	SchoolDenial            bool
-}
-
-func init() {
-	orm.RegisterModel(new(Educator), new(School), new(SchoolMatchingProfile), new(Match))
 }
