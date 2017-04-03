@@ -1,28 +1,28 @@
 package db
 
 // CreateSchoolMatchingProfile inserts an school matching profile into the db
-func CreateSchoolMatchingProfile(s *SchoolMatchingProfile) (*SchoolMatchingProfile, err error) {
-	id, err = O.Insert(&s)
+func CreateSchoolMatchingProfile(smp *SchoolMatchingProfile) (*SchoolMatchingProfile, err error) {
+	id, err = O.Insert(&smp)
 
 	if err != nil {
 		return err
 	}
 
-	s.ID = id
-	return s
+	smp.ID = id
+	return smp
 }
 
 // GetSchoolMatchingProfile gets a single school matching profile matching profile by ID
-func GetSchoolMatchingProfile(id int) (s *SchoolMatchingProfileMatchingProfile, err error) {
+func GetSchoolMatchingProfile(id int) (smp *SchoolMatchingProfileMatchingProfile, err error) {
 	O.Using("default")
-	s = SchoolMatchingProfile{ID: id}
-	err = o.Read(&s)
+	smp = SchoolMatchingProfile{ID: id}
+	err = o.Read(&smp)
 
 	if err != nil {
 		return nil, err
 	}
 	
-	return s, nil
+	return smp, nil
 }
 
 // GetSchoolMatchingProfiles gets all educators in database
@@ -47,8 +47,8 @@ func GetSchoolMatchingProfilesBySchool(sid int) (ss []*SchoolMatchingProfile, er
 }
 
 // UpdateSchoolMatchingProfile updates all fields of an school matching profile record
-func UpdateSchoolMatchingProfile(s *SchoolMatchingProfile) (err error) {
-	err = O.Update(&s)
+func UpdateSchoolMatchingProfile(smp *SchoolMatchingProfile) (err error) {
+	err = O.Update(&smp)
 	if err != nil {
 		return err
 	}
@@ -57,8 +57,8 @@ func UpdateSchoolMatchingProfile(s *SchoolMatchingProfile) (err error) {
 }
 
 // UpdateSchoolMatchingProfileByField updates a specific field in an school matching profile record
-func UpdateSchoolMatchingProfileByField(s *SchoolMatchingProfile, f string) (err error) {
-	err = O.Update(&s, field)
+func UpdateSchoolMatchingProfileByField(smp *SchoolMatchingProfile, f string) (err error) {
+	err = O.Update(&smp, field)
 	if err != nil {
 		return err
 	}
