@@ -1,8 +1,8 @@
-package main
+package db
 
 // Educator defines a database model for an educator user
 type Educator struct {
-	ID           int    `json:"id"`
+	ID           int    `orm:"column(id)" json:"id"`
 	DisplayName  string `json:"displayName"`
 	FirstName    string `json:"firstName"`
 	LastName     string `json:"lastName"`
@@ -33,7 +33,7 @@ type Educator struct {
 
 // School defines a database model for a school user
 type School struct {
-	ID          int    `json:"id"`
+	ID          int    `orm:"column(id)" json:"id"`
 	DisplayName string `json:"displayName"`
 	Name        string `json:"name"`
 	Email       string `json:"email"`
@@ -45,8 +45,8 @@ type School struct {
 
 // SchoolMatchingProfile defines a database model for a school's matching Profile
 type SchoolMatchingProfile struct {
-	ID           int     `json:"id"`
-	School       *School `orm:"rel(fk)"`
+	ID           int     `orm:"column(id)" json:"id"`
+	SchoolID     *School `orm:"rel(fk);column(school_id)" json:"schoolId"`
 	Active       bool    `json:"active"`
 	AgeRanges    []int   `json:"ageRanges"`
 	AgeRangesWgt int     `json:"ageRangesWgt"`
@@ -70,9 +70,9 @@ type SchoolMatchingProfile struct {
 
 // Match defines the database model for a match between users
 type Match struct {
-	ID                      int                   `json:"id"`
-	SchoolMatchingProfileID *SchooMatchingProfile `orm:"rel(fk)" json:"schoolMatchingProfileId"`
-	EducatorID              *Educator             `orm:"rel(fk)" json:"educatorId"`
+	ID                      int                   `orm:"column(id)" json:"id"`
+	SchoolMatchingProfileID *SchooMatchingProfile `orm:"column(school_matching_profile_id)" orm:"rel(fk)" json:"schoolMatchingProfileId"`
+	EducatorID              *Educator             `orm:"column(educator_id)" orm:"rel(fk)" json:"educatorId"`
 	Percentage              int                   `json:"percentage"`
 	EducatorConfirmation    bool                  `json:"educatorConfirmation"`
 	SchoolConfirmation      bool                  `json:"schoolConfirmation"`
