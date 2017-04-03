@@ -2,80 +2,80 @@ package main
 
 // Educator defines a database model for an educator user
 type Educator struct {
-	ID           int
-	DisplayName  string
-	FirstName    string
-	LastName     string
-	Email        string
-	Password     string
-	Active       bool
-	AvatarURL    string
-	Description  string
-	AgeRanges    []int
-	AgeRangesWgt int
-	Cals         []int
-	CalsWgt      int
-	OrgTypes     []int
-	OrgTypesWgt  int
-	LocTypes     []int
-	LocTypesWgt  int
-	EdTypes      []int
-	EdTypesWgt   int
-	Sizes        []int
-	SizesWgt     []int
-	Trainings    []int
-	TrainingsWgt []int
-	Traits       []int
-	TraitsWgt    int
-	States       []int
-	StatesWgt    int
+	ID           int    `json:"id"`
+	DisplayName  string `json:"displayName"`
+	FirstName    string `json:"firstName"`
+	LastName     string `json:"lastName"`
+	Email        string `json:"email"`
+	Password     string `json:"password"`
+	Active       bool   `json:"active"`
+	AvatarURL    string `json:"avatarURL"`
+	Description  string `json:"description"`
+	AgeRanges    []int  `json:"ageRanges"`
+	AgeRangesWgt int    `json:"ageRangesWgt"`
+	Cals         []int  `json:"cals"`
+	CalsWgt      int    `json:"calsWgt"`
+	OrgTypes     []int  `json:"orgTypes"`
+	OrgTypesWgt  int    `json:"orgTypesWgt"`
+	LocTypes     []int  `json:"locTypes"`
+	LocTypesWgt  int    `json:"locTypesWgt"`
+	EdTypes      []int  `json:"edTypes"`
+	EdTypesWgt   int    `json:"edTypesWgt"`
+	Sizes        []int  `json:"sizes"`
+	SizesWgt     []int  `json:"sizesWgt"`
+	Trainings    []int  `json:"trainings"`
+	TrainingsWgt []int  `json:"trainingsWgt"`
+	Traits       []int  `json:"traits"`
+	TraitsWgt    int    `json:"traitsWgt"`
+	States       []int  `json:"states"`
+	StatesWgt    int    `json:"statesWgt"`
 }
 
 // School defines a database model for a school user
 type School struct {
-	ID          int
-	DisplayName string
-	Name        string
-	Email       string
-	Password    string
-	Active      bool
-	AvatarURL   string
-	Description string
+	ID          int    `json:"id"`
+	DisplayName string `json:"displayName"`
+	Name        string `json:"name"`
+	Email       string `json:"email"`
+	Password    string `json:"password"`
+	Active      bool   `json:"active"`
+	AvatarURL   string `json:"avatarURL"`
+	Description string `json:"description"`
 }
 
 // SchoolMatchingProfile defines a database model for a school's matching Profile
 type SchoolMatchingProfile struct {
-	ID           int
+	ID           int     `json:"id"`
 	School       *School `orm:"rel(fk)"`
-	Active       bool
-	AgeRanges    []int
-	AgeRangesWgt int
-	Cals         []int
-	CalsWgt      int
-	OrgTypes     []int
-	OrgTypesWgt  int
-	LocTypes     []int
-	LocTypesWgt  int
-	EdTypes      []int
-	EdTypesWgt   int
-	Sizes        []int
-	SizesWgt     []int
-	Trainings    []int
-	TrainingsWgt []int
-	Traits       []int
-	TraitsWgt    int
-	States       []int
-	StatesWgt    int
+	Active       bool    `json:"active"`
+	AgeRanges    []int   `json:"ageRanges"`
+	AgeRangesWgt int     `json:"ageRangesWgt"`
+	Cals         []int   `json:"cals"`
+	CalsWgt      int     `json:"calsWgt"`
+	OrgTypes     []int   `json:"orgTypes"`
+	OrgTypesWgt  int     `json:"orgTypesWgt"`
+	LocTypes     []int   `json:"locTypes"`
+	LocTypesWgt  int     `json:"locTypesWgt"`
+	EdTypes      []int   `json:"edTypes"`
+	EdTypesWgt   int     `json:"edTypesWgt"`
+	Sizes        []int   `json:"sizes"`
+	SizesWgt     []int   `json:"sizesWgt"`
+	Trainings    []int   `json:"trainings"`
+	TrainingsWgt []int   `json:"trainingsWgt"`
+	Traits       []int   `json:"traits"`
+	TraitsWgt    int     `json:"traitsWgt"`
+	States       []int   `json:"states"`
+	StatesWgt    int     `json:"statesWgt"`
 }
 
 // Match defines the database model for a match between users
 type Match struct {
-	ID                      int
-	SchoolMatchingProfileID *SchooMatchingProfile `orm:"rel(fk)"`
-	EducatorID              *Educator             `orm:"rel(fk)"`
-	Percentage              int
-	EducatorConfirmation    bool
-	SchoolConfirmation      bool
-	EducatorDenial          bool
-	SchoolDenial            bool
+	ID                      int                   `json:"id"`
+	SchoolMatchingProfileID *SchooMatchingProfile `orm:"rel(fk)" json:"schoolMatchingProfileId"`
+	EducatorID              *Educator             `orm:"rel(fk)" json:"educatorId"`
+	Percentage              int                   `json:"percentage"`
+	EducatorConfirmation    bool                  `json:"educatorConfirmation"`
+	SchoolConfirmation      bool                  `json:"schoolConfirmation"`
+	EducatorDenial          bool                  `json:"educatorDenial"`
+	SchoolDenial            bool                  `json:"schoolDenial"`
 }
