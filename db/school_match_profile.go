@@ -1,8 +1,8 @@
 package db
 
 // CreateSchoolMatchingProfile inserts an school matching profile into the db
-func CreateSchoolMatchingProfile(smp *SchoolMatchingProfile) (*SchoolMatchingProfile, err error) {
-	id, err = O.Insert(&smp)
+func CreateSchoolMatchingProfile(smp *SchoolMatchingProfile) (*SchoolMatchingProfile, error) {
+	id, err := O.Insert(&smp)
 
 	if err != nil {
 		return err
@@ -21,7 +21,7 @@ func GetSchoolMatchingProfile(id int) (smp *SchoolMatchingProfileMatchingProfile
 	if err != nil {
 		return nil, err
 	}
-	
+
 	return smp, nil
 }
 

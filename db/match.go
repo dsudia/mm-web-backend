@@ -1,8 +1,8 @@
 package db
 
 // CreateMatch inserts an match into the db
-func CreateMatch(m *Match) (*Match, err error) {
-	id, err = O.Insert(&m)
+func CreateMatch(m *Match) (*Match, error) {
+	id, err := O.Insert(&m)
 
 	if err != nil {
 		return err

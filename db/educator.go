@@ -1,15 +1,15 @@
 package db
 
 // CreateEducator inserts an educator into the db
-func CreateEducator(e *Educator) (*Educator, err error) {
-	id, err = O.Insert(&e)
+func CreateEducator(e *Educator) (*Educator, error) {
+	id, err := O.Insert(&e)
 
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	e.ID = id
-	return e
+	return e, nil
 }
 
 // GetEducator gets a single educator by ID

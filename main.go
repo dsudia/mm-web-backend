@@ -11,18 +11,13 @@ func getMainEngine() *gin.Engine {
 
 	// Healthchecker for ELB
 	r.GET("/check", func(c *gin.Context) {
-		c.String(http.StatusOK, "Ok")
+		c.String(http.StatusOK, "OK")
 		c.AbortWithStatus(200)
 	})
 
-	r.POST("/signup", func(c *gin.Context) {
-		var ne NewEducator
-		c.BindJSON(&ne)
+	r.POST("/signup/educator", routes.CreateEducatorRoute(*gin.Context))
 
-		h := bcrypt.GenerateFromPassword(ne.Password, 10)
-
-		ne.Password = h
-	})
+	r.POST("/signup/school", routes.CreateSchoolRoute(*gin.Context))
 }
 
 func main() {

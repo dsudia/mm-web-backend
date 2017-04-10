@@ -1,8 +1,8 @@
 package db
 
 // CreateSchool inserts an school into the db
-func CreateSchool(s *School) (*School, err error) {
-	id, err = O.Insert(&s)
+func CreateSchool(s *School) (*School, error) {
+	id, err := O.Insert(&s)
 
 	if err != nil {
 		return err
