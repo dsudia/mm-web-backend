@@ -21,13 +21,13 @@ func GetMatch(id int) (m *MatchMatchingProfile, err error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	return m, nil
 }
 
-// GetMatchs gets all educators in database
-func GetMatches() (ss []*Match, err error) {
-	_, err := o.QueryTable("match").All(&ss)
+// GetMatches gets all educators in database
+func GetMatches() (ms []*Match, err error) {
+	_, err := o.QueryTable("match").All(&ms)
 
 	if err != nil {
 		return nil, err
@@ -36,8 +36,9 @@ func GetMatches() (ss []*Match, err error) {
 	return ss, nil
 }
 
+// GetMatchesBySchoolMatchingProfile does what it says
 func GetMatchesBySchoolMatchingProfile(smpid int) (ms []*Match, err error) {
-	_, err := o.QueryTable("match").Filter("school_matching_profile_id", smpid).All(&ss)
+	_, err := o.QueryTable("match").Filter("school_matching_profile_id", smpid).All(&ms)
 
 	if err != nil {
 		return nil, err
@@ -46,8 +47,20 @@ func GetMatchesBySchoolMatchingProfile(smpid int) (ms []*Match, err error) {
 	return ms, nil
 }
 
-funct GetMatchesByEducator(eid int) (ms []*Match, err error) {
-	_, err := o.QueryTable("match").Filter("educator_id", eid).All(&ss)
+// GetMatchesByEducator does what it says
+func GetMatchesByEducator(eid int) (ms []*Match, err error) {
+	_, err := O.QueryTable("match").Filter("educator_id", eid).All(&ss)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return ms, nil
+}
+
+// GetMatchesByEducatorAndSchool does what it says
+func GetMatchesByEducatorAndSchool(eid int, sid int) (ms []*Match, err error) {
+	_, err := O.QueryTable("match").Filter("educator_id", eid).Filter("school_matching_profile_id", sid).All(&ms)
 
 	if err != nil {
 		return nil, err
